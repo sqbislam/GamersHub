@@ -14,19 +14,21 @@ class FillOutlineButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialButton(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(30),
-        side: BorderSide(color: Colors.white, width: 2.0),
-      ),
-      elevation: isFilled ? 2 : 0,
-      color: isFilled ? Theme.of(context).accentColor : Colors.transparent,
-      onPressed: press,
-      child: Text(
-        text,
-        style: TextStyle(
-          color: isFilled ? Colors.white : Colors.white,
-          fontSize: 13,
+    return Expanded(
+      child: MaterialButton(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(30),
+          side: BorderSide(color: Colors.white, width: 2.0),
+        ),
+        elevation: isFilled ? 2 : 0,
+        color: isFilled ? Theme.of(context).accentColor : Colors.transparent,
+        onPressed: press,
+        child: Text(
+          text,
+          style: TextStyle(
+            color: isFilled ? Colors.white : Colors.white,
+            fontSize: 13,
+          ),
         ),
       ),
     );

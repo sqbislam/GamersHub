@@ -19,13 +19,13 @@ class ChatCard extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(
             horizontal: Constants.kdefaultPadding,
-            vertical: Constants.kdefaultPadding * 0.75),
+            vertical: Constants.kdefaultPadding * 2),
         child: Row(
           children: [
             Stack(
               children: [
                 CircleAvatar(
-                  radius: 24,
+                  radius: 32,
                   foregroundImage: NetworkImage(chat.image),
                 ),
                 if (chat.isActive)
@@ -36,7 +36,7 @@ class ChatCard extends StatelessWidget {
                       height: 16,
                       width: 16,
                       decoration: BoxDecoration(
-                        color: Theme.of(context).primaryColor,
+                        color: Colors.greenAccent,
                         shape: BoxShape.circle,
                         border: Border.all(
                             color: Theme.of(context).scaffoldBackgroundColor,

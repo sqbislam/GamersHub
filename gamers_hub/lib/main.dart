@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gamers_hub/components/auth_screens/register_screen.dart';
 import 'package:gamers_hub/components/dashboard/dashboard_screen.dart';
+import 'package:gamers_hub/components/individual_chat/messages_screen.dart';
 import 'package:gamers_hub/components/splash_screen/splash_screen.dart';
 import 'package:get/get.dart';
 
@@ -42,6 +43,10 @@ class MyApp extends StatelessWidget {
             name: Routes.Dashboard,
             page: () => DashboardScreen(),
             transition: Transition.rightToLeft),
+        GetPage(
+            name: Routes.Message,
+            page: () => MessagesScreen(),
+            transition: Transition.rightToLeft)
       ],
     );
   }
