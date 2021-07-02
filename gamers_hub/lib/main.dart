@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:gamers_hub/components/auth_screens/register_screen.dart';
+import 'package:gamers_hub/components/dashboard/dashboard_screen.dart';
 import 'package:gamers_hub/components/splash_screen/splash_screen.dart';
-import 'package:gamers_hub/theme/colors.dart';
 import 'package:get/get.dart';
 
+import 'components/auth_screens/login_screen.dart';
 import 'components/home.dart';
 import 'core/routes.dart';
 import 'theme/themes.dart';
@@ -21,17 +23,25 @@ class MyApp extends StatelessWidget {
       darkTheme: themeDark,
       debugShowCheckedModeBanner: false,
       // NOTE: Optional - use themeMode to specify the startup theme
-      themeMode: ThemeMode.system,
-      initialRoute: Routes.Home,
+      themeMode: ThemeMode.dark,
+      initialRoute: Routes.Splash,
       getPages: [
-        GetPage(
-            name: Routes.Home,
-            page: () => MyHomePage(key: Key("Homepage")),
-            transition: Transition.leftToRight),
         GetPage(
             name: Routes.Splash,
             page: () => SplashScreen(),
-            transition: Transition.leftToRight)
+            transition: Transition.rightToLeft),
+        GetPage(
+            name: Routes.Login,
+            page: () => LoginScreen(),
+            transition: Transition.rightToLeft),
+        GetPage(
+            name: Routes.Register,
+            page: () => RegisterScreen(),
+            transition: Transition.rightToLeft),
+        GetPage(
+            name: Routes.Dashboard,
+            page: () => DashboardScreen(),
+            transition: Transition.rightToLeft),
       ],
     );
   }

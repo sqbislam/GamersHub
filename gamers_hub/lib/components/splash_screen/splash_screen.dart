@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:gamers_hub/core/routes.dart';
 import 'package:gamers_hub/theme/constants.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -43,17 +44,22 @@ class SplashScreen extends StatelessWidget {
                 "Welcome to the best social media platform for gamers.",
                 textAlign: TextAlign.left,
                 style: GoogleFonts.roboto(
-                    textStyle:
-                        TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
+                    textStyle: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                        color: Colors.white70)),
               ),
               SizedBox(
                 height: Constants.kdefaultPadding * 20,
               ),
               ElevatedButton(
                 onPressed: () {
-                  Get.offAndToNamed('/home');
+                  Get.offAndToNamed(Routes.Login);
                 },
-                child: Text("Get Started"),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [Text("Get Started"), Icon(Icons.chevron_right)],
+                ),
               )
             ],
           ),
