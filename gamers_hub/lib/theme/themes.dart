@@ -10,6 +10,13 @@ var themeLight = ThemeData.dark().copyWith(
     backgroundColor: ColorsTheme.background_black,
     scaffoldBackgroundColor: ColorsTheme.background_black,
     accentColor: ColorsTheme.accent_bg_black,
+    canvasColor: ColorsTheme.background_black,
+    iconTheme:
+        ThemeData.dark().iconTheme.copyWith(color: ColorsTheme.accent_bg_black),
+    primaryIconTheme: _customIconTheme(ThemeData.dark().iconTheme),
+    textTheme: _buildShrineTextTheme(ThemeData.dark().textTheme),
+    primaryTextTheme: _buildShrineTextTheme(ThemeData.dark().primaryTextTheme),
+    accentTextTheme: _buildShrineTextTheme(ThemeData.dark().accentTextTheme),
     elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
       onPrimary: Colors.white,
@@ -28,12 +35,14 @@ var themeDark = ThemeData.dark().copyWith(
     scaffoldBackgroundColor: ColorsTheme.background_blue,
     accentColor: ColorsTheme.accent_bg_blue,
     errorColor: Colors.red[900],
+    canvasColor: ColorsTheme.background_blue,
     cardColor: shrineBackgroundWhite,
     primaryIconTheme: _customIconTheme(ThemeData.dark().iconTheme),
     textTheme: _buildShrineTextTheme(ThemeData.dark().textTheme),
     primaryTextTheme: _buildShrineTextTheme(ThemeData.dark().primaryTextTheme),
     accentTextTheme: _buildShrineTextTheme(ThemeData.dark().accentTextTheme),
-    iconTheme: _customIconTheme(ThemeData.dark().iconTheme),
+    iconTheme:
+        ThemeData.dark().iconTheme.copyWith(color: ColorsTheme.accent_bg_blue),
     elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
       onPrimary: Colors.white,

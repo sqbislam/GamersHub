@@ -24,6 +24,14 @@ class _DashboardScreenState extends State<DashboardScreen>
     _controller =
         new TabController(initialIndex: selectedPage, length: 5, vsync: this);
     selectedPage = 0;
+    _controller.addListener(_onPageChange);
+  }
+
+  _onPageChange() {
+    final FocusScopeNode currentScope = FocusScope.of(context);
+    if (!currentScope.hasPrimaryFocus && currentScope.hasFocus) {
+      FocusManager.instance.primaryFocus!.unfocus();
+    }
   }
 
   final PageController controller = PageController(
@@ -71,7 +79,6 @@ class _DashboardScreenState extends State<DashboardScreen>
       child: Scaffold(
         body: SafeArea(
           child: new TabBarView(
-            physics: BouncingScrollPhysics(),
             controller: _controller,
             children: <Widget>[
               Center(

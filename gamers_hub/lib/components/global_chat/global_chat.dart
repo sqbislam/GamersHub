@@ -35,6 +35,15 @@ class _GlobalChatScreenState extends State<GlobalChatScreen> {
     });
   }
 
+  @override
+  void dispose() {
+    final FocusScopeNode currentScope = FocusScope.of(context);
+    if (!currentScope.hasPrimaryFocus && currentScope.hasFocus) {
+      FocusManager.instance.primaryFocus!.unfocus();
+    }
+    super.dispose();
+  }
+
   void _handleAtachmentPressed() {
     showModalBottomSheet<void>(
       context: context,
@@ -176,7 +185,7 @@ class _GlobalChatScreenState extends State<GlobalChatScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Apex Legends".toUpperCase(),
-            style: GoogleFonts.robotoMono(), textScaleFactor: 1.5),
+            style: GoogleFonts.roboto(), textScaleFactor: 1.2),
         leading: Icon(
           Icons.all_inclusive_outlined,
           color: Theme.of(context).accentColor,

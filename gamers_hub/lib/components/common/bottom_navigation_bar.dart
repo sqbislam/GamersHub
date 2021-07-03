@@ -18,14 +18,6 @@ const List<Tab> _tabs = <Tab>[
   ),
 ];
 
-const List<IconData> _icons = <IconData>[
-  Icons.circle_sharp,
-  Icons.star_border_outlined,
-  Icons.chat_bubble_outline,
-  Icons.article_sharp,
-  Icons.person
-];
-
 class BottomNavigation extends StatelessWidget {
   const BottomNavigation(
       {Key? key, required int selectedIndex, required TabController controller})
