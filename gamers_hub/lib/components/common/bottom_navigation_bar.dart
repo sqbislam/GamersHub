@@ -1,45 +1,49 @@
 import 'package:flutter/material.dart';
 
+const List<Tab> _tabs = <Tab>[
+  Tab(
+    icon: Icon(Icons.circle_sharp),
+  ),
+  Tab(
+    icon: Icon(Icons.star_border_outlined),
+  ),
+  Tab(
+    icon: Icon(Icons.chat_bubble_outline),
+  ),
+  Tab(
+    icon: Icon(Icons.article_sharp),
+  ),
+  Tab(
+    icon: Icon(Icons.person),
+  ),
+];
+
+const List<IconData> _icons = <IconData>[
+  Icons.circle_sharp,
+  Icons.star_border_outlined,
+  Icons.chat_bubble_outline,
+  Icons.article_sharp,
+  Icons.person
+];
+
 class BottomNavigation extends StatelessWidget {
   const BottomNavigation(
-      {Key? key, required int selectedIndex, required Function(int) onItemTap})
-      : _selectedIndex = selectedIndex,
-        _onItemTap = onItemTap,
+      {Key? key, required int selectedIndex, required TabController controller})
+      : _controller = controller,
         super(key: key);
+  final TabController _controller;
 
-  final int _selectedIndex;
-  final Function(int) _onItemTap;
   @override
   Widget build(BuildContext context) {
-    return BottomNavigationBar(
-      showSelectedLabels: false,
-      type: BottomNavigationBarType.shifting,
-      items: const <BottomNavigationBarItem>[
-        BottomNavigationBarItem(
-            icon: Icon(Icons.circle_sharp),
-            label: "global",
-            backgroundColor: Colors.black12),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.star_border_outlined),
-            label: "starred",
-            backgroundColor: Colors.black12),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.chat_bubble_outline),
-            label: "chat",
-            backgroundColor: Colors.black12),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.article_sharp),
-            label: "News",
-            backgroundColor: Colors.black12),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: "Profile",
-            backgroundColor: Colors.black12),
-      ],
-      currentIndex: _selectedIndex,
-      selectedItemColor: Theme.of(context).accentColor,
-      unselectedItemColor: Colors.white70,
-      onTap: _onItemTap,
+    return TabBar(
+      unselectedLabelColor: Colors.white24,
+      indicatorSize: TabBarIndicatorSize.label,
+      indicatorColor: Colors.transparent,
+      labelColor: Theme.of(context).accentColor,
+      labelStyle: TextStyle(fontSize: 20),
+      unselectedLabelStyle: TextStyle(fontSize: 18),
+      controller: _controller,
+      tabs: _tabs,
     );
   }
 }
