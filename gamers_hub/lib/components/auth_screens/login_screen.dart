@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:gamers_hub/components/common/regular_form_button.dart';
 import 'package:gamers_hub/components/common/regular_form_textfield.dart';
+import 'package:gamers_hub/controllers/auth_controller.dart';
 import 'package:gamers_hub/core/routes.dart';
+import 'package:gamers_hub/helpers/validator.dart';
 import 'package:gamers_hub/theme/constants.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -16,6 +18,8 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final AuthController authController = AuthController.to;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,28 +43,31 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             RegularFormTextField(
               hintText: "Enter your Email",
-              validator: (String? value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter a valid email';
-                }
-                return null;
-              },
+              controller: authController.emailController,
+              validator: Validator().password,
               prefixIcon: Icons.email_sharp,
+              onSaved: (value) => authController.emailController.text = value!,
             ),
             RegularFormTextField(
               hintText: "Enter your password",
+              controller: authController.passwordController,
               obscureText: true,
-              validator: (String? value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter a valid password';
-                }
-                return null;
-              },
+              validator: Validator().email,
               prefixIcon: Icons.vpn_key,
+              onSaved: (value) =>
+                  authController.passwordController.text = value!,
             ),
             RegularFormButton(
-              formKey: _formKey,
-              pageRouteOnSuccess: Routes.Dashboard,
+              onPressed: () {
+                // Validate returns true if the form is valid, or false otherwise.
+                if (_formKey.currentState!.validate()) {
+                  // If the form is valid, display a snackbar. In the real world,
+                  // you'd often call a server or save the information in a database.
+                  authController.signInWithEmailAndPassword(context);
+                  ScaffoldMessenger.of(context)
+                      .showSnackBar(SnackBar(content: Text('Logging In...')));
+                }
+              },
             ),
             SizedBox(
               height: Constants.kdefaultPadding * 4,

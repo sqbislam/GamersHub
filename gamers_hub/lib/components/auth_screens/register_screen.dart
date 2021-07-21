@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gamers_hub/components/common/regular_form_button.dart';
 import 'package:gamers_hub/components/common/regular_form_textfield.dart';
+import 'package:gamers_hub/controllers/auth_controller.dart';
 import 'package:gamers_hub/core/routes.dart';
 import 'package:gamers_hub/theme/constants.dart';
 import 'package:get/get.dart';
@@ -16,6 +17,7 @@ class RegisterScreen extends StatefulWidget {
 
 class _RegisterScreenState extends State<RegisterScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final AuthController authController = AuthController.to;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -80,7 +82,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
               prefixIcon: Icons.vpn_key,
             ),
             RegularFormButton(
-              formKey: _formKey,
+              onPressed: () {
+                // Validate returns true if the form is valid, or false otherwise.
+                if (_formKey.currentState!.validate()) {
+                  // If the form is valid, display a snackbar. In the real world,
+                  // you'd often call a server or save the information in a database.
+                  authController.signInWithEmailAndPassword(context);
+                  ScaffoldMessenger.of(context)
+                      .showSnackBar(SnackBar(content: Text('Logging In...')));
+                }
+              },
             ),
             SizedBox(
               height: Constants.kdefaultPadding * 4,

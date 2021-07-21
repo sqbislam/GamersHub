@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:gamers_hub/components/auth_screens/register_screen.dart';
 import 'package:gamers_hub/components/dashboard/dashboard_screen.dart';
+import 'package:gamers_hub/components/game_screens/game_chooser.dart';
 import 'package:gamers_hub/components/individual_chat/messages_screen.dart';
 import 'package:gamers_hub/components/splash_screen/splash_screen.dart';
 import 'package:get/get.dart';
 
 import 'components/auth_screens/login_screen.dart';
-import 'components/home.dart';
+
 import 'core/routes.dart';
 import 'theme/themes.dart';
 
@@ -46,7 +47,11 @@ class MyApp extends StatelessWidget {
         GetPage(
             name: Routes.Message,
             page: () => MessagesScreen(),
-            transition: Transition.rightToLeft)
+            transition: Transition.rightToLeft),
+        GetPage(
+            name: Routes.GameChooser,
+            page: () => GameChooserScreen(),
+            transition: Transition.downToUp)
       ],
     );
   }

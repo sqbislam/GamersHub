@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:gamers_hub/components/profile_screen/profile_activity_list.dart';
 import 'package:gamers_hub/components/profile_screen/settings_drawer.dart';
+import 'package:gamers_hub/core/routes.dart';
 import 'package:gamers_hub/theme/constants.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ProfileMainScreen extends StatelessWidget {
@@ -47,7 +49,9 @@ class ProfileMainScreen extends StatelessWidget {
                             height: 10,
                           ),
                           ElevatedButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Get.toNamed(Routes.GameChooser);
+                              },
                               child: Text("Apex Legends",
                                   style: GoogleFonts.roboto()
                                       .copyWith(fontWeight: FontWeight.bold)))

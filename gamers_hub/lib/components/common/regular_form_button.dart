@@ -5,21 +5,19 @@ import 'package:get/get.dart';
 class RegularFormButton extends StatelessWidget {
   const RegularFormButton(
       {Key? key,
-      required GlobalKey<FormState> formKey,
       Color? fillColor,
       Color? textColor,
+      required void Function()? onPressed,
       String? pageRouteOnSuccess})
-      : _formKey = formKey,
-        _fillColor = fillColor,
+      : _fillColor = fillColor,
         _textColor = textColor,
-        _pageRouteOnSuccess = pageRouteOnSuccess,
+        onPressed = onPressed,
         super(key: key);
 
-  final GlobalKey<FormState> _formKey;
   final Color? _fillColor;
   final Color? _textColor;
-  final String? _pageRouteOnSuccess;
 
+  final void Function()? onPressed;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -31,16 +29,7 @@ class RegularFormButton extends StatelessWidget {
           backgroundColor:
               MaterialStateProperty.all(_fillColor ?? Colors.white),
         ),
-        onPressed: () {
-          // Validate will return true if the form is valid, or false if
-          // the form is invalid.
-          if (_formKey.currentState!.validate()) {
-            // Process data.
-            _pageRouteOnSuccess != null
-                ? Get.offAllNamed(_pageRouteOnSuccess!)
-                : null;
-          }
-        },
+        onPressed: onPressed,
         child: Text(
           'Submit',
           style:

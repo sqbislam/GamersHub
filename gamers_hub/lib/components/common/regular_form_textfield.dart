@@ -8,12 +8,14 @@ class RegularFormTextField extends StatelessWidget {
       IconData? prefixIcon,
       String hintText = "Default Hint",
       bool obscureText = false,
+      void Function(String?)? onSaved,
       String? Function(String?)? validator})
       : _controller = controller,
         _prefixIcon = prefixIcon,
         _hintText = hintText,
         _obscureText = obscureText,
         _validator = validator,
+        _onSaved = onSaved,
         super(key: key);
 
   final TextEditingController? _controller;
@@ -21,6 +23,7 @@ class RegularFormTextField extends StatelessWidget {
   final String? _hintText;
   final bool _obscureText;
   final String? Function(String?)? _validator;
+  final void Function(String?)? _onSaved;
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +34,7 @@ class RegularFormTextField extends StatelessWidget {
       child: TextFormField(
         controller: _controller ?? null,
         obscureText: _obscureText,
+        onSaved: _onSaved,
         decoration: InputDecoration(
             hintText: _hintText,
             enabledBorder: OutlineInputBorder(

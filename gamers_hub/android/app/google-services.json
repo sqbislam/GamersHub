@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "66675336555",
+    "project_id": "gamers-hub-10693",
+    "storage_bucket": "gamers-hub-10693.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:66675336555:android:54a6f8e5e58c103e10582e",
+        "android_client_info": {
+          "package_name": "com.example.gamers_hub"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "66675336555-pgkqi233vdd8k69rpud3bvgvchs3h7o3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.gamers_hub",
+            "certificate_hash": "3a0110a95046e21b8a28a57f93965724276dbf97"
+          }
+        },
+        {
+          "client_id": "66675336555-imr1lmg7jja4gdokhr74lamdddft3040.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCb6mZAae33nnnS08FDgjOHHxyoaii9bjg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "66675336555-imr1lmg7jja4gdokhr74lamdddft3040.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
