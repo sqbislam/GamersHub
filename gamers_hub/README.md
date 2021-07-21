@@ -1,16 +1,23 @@
-# gamers_hub
+# Gamers Hub: Community to connect for gamers and players at the click of a button.
+Necessary platform intended to start in BD but aims to be global after MVP.
 
-A new Flutter project.
+Founders: Naafis Alam (CEO) , Saqib Al Islam (CTO).
 
-## Getting Started
+Currently in early dev stages. MVP launch expected within ~2 months
 
-This project is a starting point for a Flutter application.
+## Introduction
 
-A few resources to get you started if this is your first Flutter project:
+This project is mainly built with cross-platform and agile development in mind. The deliverables need to be iterated and tested early on smaller communities to establish brand value.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Technical details
+- Built with Flutter with Firebase as BaaS. (MVP)
+- Might need to add custom backend infrastructure later for integration of streaming and short clips. 
+- Intended to launch primarily for Android and IOS.
+- CI/CD pipeline using github actions.
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Privacy
+
+Currently this is a private repo with no free accesss or licesnse for any sort of commercial / academic use. 
+Copyrighted by the co-founders. 
+If in the future there is plan of turning it into open source we will decide on it as necessary through informed decisions and business requirement needs.
+
