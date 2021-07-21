@@ -23,7 +23,7 @@ class AuthController extends GetxController {
 
   @override
   void onReady() async {
-    //run every time auth state changes
+    // Run every time auth state changes
     ever(firebaseUser, handleAuthChanged);
 
     firebaseUser.bindStream(user);
@@ -40,7 +40,7 @@ class AuthController extends GetxController {
   }
 
   handleAuthChanged(_firebaseUser) async {
-    //get user data from firestore
+    // Get user data from firestore
     if (_firebaseUser?.uid != null) {
       firestoreUser.bindStream(streamFirestoreUser());
       await isAdmin();

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:gamers_hub/theme/constants.dart';
-import 'package:get/get.dart';
 
 class RegularFormButton extends StatelessWidget {
   const RegularFormButton(
