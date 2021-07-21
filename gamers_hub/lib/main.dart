@@ -4,6 +4,7 @@ import 'package:gamers_hub/components/dashboard/dashboard_screen.dart';
 import 'package:gamers_hub/components/game_screens/game_chooser.dart';
 import 'package:gamers_hub/components/individual_chat/messages_screen.dart';
 import 'package:gamers_hub/components/splash_screen/splash_screen.dart';
+import 'package:gamers_hub/controllers/auth_bindings.dart';
 import 'package:get/get.dart';
 
 import 'components/auth_screens/login_screen.dart';
@@ -35,23 +36,28 @@ class MyApp extends StatelessWidget {
         GetPage(
             name: Routes.Login,
             page: () => LoginScreen(),
-            transition: Transition.rightToLeft),
+            transition: Transition.rightToLeft,
+            binding: AuthBinding()),
         GetPage(
             name: Routes.Register,
             page: () => RegisterScreen(),
-            transition: Transition.rightToLeft),
+            transition: Transition.rightToLeft,
+            binding: AuthBinding()),
         GetPage(
             name: Routes.Dashboard,
             page: () => DashboardScreen(),
-            transition: Transition.rightToLeft),
+            transition: Transition.rightToLeft,
+            binding: AuthBinding()),
         GetPage(
             name: Routes.Message,
             page: () => MessagesScreen(),
-            transition: Transition.rightToLeft),
+            transition: Transition.rightToLeft,
+            binding: AuthBinding()),
         GetPage(
             name: Routes.GameChooser,
             page: () => GameChooserScreen(),
-            transition: Transition.downToUp)
+            transition: Transition.downToUp,
+            binding: AuthBinding())
       ],
     );
   }
