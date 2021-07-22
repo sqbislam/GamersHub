@@ -18,6 +18,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
   final AuthController authController = AuthController.to;
 
   @override
@@ -44,7 +45,7 @@ class _LoginScreenState extends State<LoginScreen> {
             RegularFormTextField(
               hintText: "Enter your Email",
               controller: authController.emailController,
-              validator: Validator().password,
+              validator: Validator().email,
               prefixIcon: Icons.email_sharp,
               onSaved: (value) => authController.emailController.text = value!,
             ),
@@ -52,7 +53,6 @@ class _LoginScreenState extends State<LoginScreen> {
               hintText: "Enter your password",
               controller: authController.passwordController,
               obscureText: true,
-              validator: Validator().email,
               prefixIcon: Icons.vpn_key,
               onSaved: (value) =>
                   authController.passwordController.text = value!,

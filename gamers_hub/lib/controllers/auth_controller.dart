@@ -4,7 +4,7 @@ import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:gamers_hub/components/auth_screens/login_screen.dart';
 import 'package:gamers_hub/components/common/loading.dart';
-import 'package:gamers_hub/components/dashboard/dashboard_screen.dart';
+import 'package:gamers_hub/core/routes.dart';
 import 'package:gamers_hub/helpers/gravatar.dart';
 import 'package:gamers_hub/models/user_model.dart';
 import 'package:get/get.dart';
@@ -23,7 +23,7 @@ class AuthController extends GetxController {
 
   @override
   void onReady() async {
-    //run every time auth state changes
+    // Run every time auth state changes
     ever(firebaseUser, handleAuthChanged);
 
     firebaseUser.bindStream(user);
@@ -33,14 +33,14 @@ class AuthController extends GetxController {
 
   @override
   void onClose() {
-    nameController.dispose();
-    emailController.dispose();
-    passwordController.dispose();
+    nameController.clear();
+    emailController.clear();
+    passwordController.clear();
     super.onClose();
   }
 
   handleAuthChanged(_firebaseUser) async {
-    //get user data from firestore
+    // Get user data from firestore
     if (_firebaseUser?.uid != null) {
       firestoreUser.bindStream(streamFirestoreUser());
       await isAdmin();
@@ -50,7 +50,8 @@ class AuthController extends GetxController {
       print('Send to SignIn');
       Get.offAll(LoginScreen());
     } else {
-      Get.offAll(DashboardScreen());
+      print('Send to Dashboard');
+      Get.offAndToNamed(Routes.Dashboard);
     }
   }
 
@@ -78,17 +79,30 @@ class AuthController extends GetxController {
 
   //Method to handle user sign in using email and password
   signInWithEmailAndPassword(BuildContext context) async {
-    showLoadingIndicator();
+    // showLoadingIndicator();
 
     try {
-      await _auth.signInWithEmailAndPassword(
-          email: emailController.text.trim(),
-          password: passwordController.text.trim());
-      emailController.clear();
-      passwordController.clear();
-      hideLoadingIndicator();
+      UserCredential res = await _auth
+          .signInWithEmailAndPassword(
+              email: emailController.text.trim(),
+              password: passwordController.text.trim())
+          .then((user) {
+        if (user != null) {
+          print('Send to Dashboard');
+          Get.offAndToNamed(Routes.Dashboard);
+        }
+        return user;
+      }, onError: (err) {
+        print(err);
+        return err;
+      });
+      // emailController.clear();
+      // passwordController.clear();
+      print(res);
+      // hideLoadingIndicator();
     } catch (error) {
-      hideLoadingIndicator();
+      print(error);
+      // hideLoadingIndicator();
       Get.snackbar('auth.signInErrorTitle'.tr, 'auth.signInError'.tr,
           snackPosition: SnackPosition.BOTTOM,
           duration: Duration(seconds: 7),
