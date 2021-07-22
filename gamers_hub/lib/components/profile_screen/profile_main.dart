@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:gamers_hub/components/profile_screen/profile_activity_list.dart';
 import 'package:gamers_hub/components/profile_screen/settings_drawer.dart';
+import 'package:gamers_hub/controllers/controllers.dart';
 import 'package:gamers_hub/core/routes.dart';
 import 'package:gamers_hub/theme/constants.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ProfileMainScreen extends StatelessWidget {
-  const ProfileMainScreen({Key? key}) : super(key: key);
+  ProfileMainScreen({Key? key}) : super(key: key);
+
+  final controller = Get.find<AuthController>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: _buildProfileAppbar(context),
+        appBar:
+            _buildProfileAppbar(context, controller.firebaseUser.value?.email),
         endDrawer: SettingsDrawer(),
         body: SafeArea(
           child: Padding(
@@ -74,9 +78,9 @@ class ProfileMainScreen extends StatelessWidget {
         ));
   }
 
-  AppBar _buildProfileAppbar(BuildContext context) {
+  AppBar _buildProfileAppbar(BuildContext context, String? uid) {
     return AppBar(
-      title: Text("#userTag819",
+      title: Text(uid ?? "#userTag819",
           style: GoogleFonts.comfortaa().copyWith(
               fontSize: Theme.of(context).textTheme.headline6!.fontSize)),
       actions: [
